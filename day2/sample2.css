@@ -1,0 +1,15 @@
+body {
+    background-color: linen;
+  }
+
+  .form_class{
+    border:5px groove black;
+    border-radius: 10px;
+  }
+
+
+  .result_section:hover{
+    border:5px solid lightblue;
+    border-radius: 10px;
+
+  }
