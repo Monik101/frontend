@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/temp.css">
+</head>
+<body>
+    <div class="form_class">
+        <form id="form1" >
+            <center>
+                
+                <h1>Login Details</h1>
+                <hr>
+                <table>
+                    
+                    <tr>
+                        <td><label for="name">Name:</label></td>
+                        <td><input type="text" name="name" id="1" required></td>
+                    </tr>
+
+                    <tr>
+                        <td><label for="age">Age:</label></td>
+                        <td><input type="number" name="age" value="21" id="2" min = "1" max="100"  ></td>
+                    </tr>
+
+                    <tr>
+                        <td><label for="gender">Gender:</label></td>
+                        <td>
+                            <input  name="gender" type="radio" value="Male" >
+                            <label for="Male">Male</label>
+                            <br>
+                            <input name="gender" type="radio" value="Female">
+                            <label for="Female">Female</label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label>County:</label></td>
+                        <td>
+                            <select id="3">
+                                <option>India</option>
+                                <option>Iran</option>
+                                <option>Japan</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Technological stack:</label></td>
+                        <td>
+                            <label>JavaScript</label>
+                            <input name="tech" type="checkbox" value="JavaScript">
+
+                            <label>HTML</label>
+                            <input name="tech" type="checkbox" value="HTML">
+
+                            <label>CSS</label>
+                            <input name="tech" type="checkbox" value="CSS">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Address:</label></td>
+                        <td><textarea id="address">Temp Address</textarea></td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Email:</label></td>
+                        <td><input id="email" type="email"/></td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Telephone Number:</label></td>
+                        <td><input id="phone" type="tel"/></td>
+                    </tr>
+                </table>
+
+                <input type="submit" value="SUBMIT">  <input type="reset" value="reset" >
+            </center>
+        </form>
+    </div>
+    
+
+    <div class="result_section">
+        <center><p id="results"></p></center>
+    </div>
+
+
+    <script>
+        function reset_func(){
+            document.getElementById("form1").reset();      
+            document.getElementById("results").innerHTML = "";
+        }
+        function submit_func(){
+            let name = document.getElementById("1").value;
+            let age = document.getElementById("2").value;
+
+            let gender_temp = document.getElementsByName("gender");
+            let gender 
+            for(let i =0; i<gender_temp.length;i++){
+                if (gender_temp[i].checked){
+                    gender = gender_temp[i].value;
+                }
+            }
+
+            let e = document.getElementById("3");
+            country = e.options[e.selectedIndex].text
+
+            let stack_temp = document.getElementsByName("tech");
+            const tech =[]
+            for(let i = 0; i< stack_temp.length;i++){
+                if(stack_temp[i].checked){
+                    tech.push(stack_temp[i].value)
+                }
+            }
+
+            let address = document.getElementById("address").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+
+
+            if(name=="" ){
+                alert("Please fill the name");
+            }else if(age == ""){
+                alert("Please fill the age");
+            }else if(age == ""){
+                alert("Please fill the age");
+            }else if (gender == undefined){
+                alert("Please select a gender")
+            }else if (tech.length == 0){
+                alert("Please select one tech")
+            }else if (address == ""){
+                alert("Please provide Addresss")
+            }else if (email == ""){
+                alert("Please provide a valid email")
+            }else if (phone == ""){
+                alert("Please give a telephone number")
+            }else{
+                document.getElementById("results").innerHTML = ["Name: " + name + "<br/>" + " age: " + age+ "<br/>"+" gender: " + gender+ "<br/>"
+                + "Country: " +country + "<br/>"+ "Technology stack: "+ tech+ "<br/>"+ "Address: "+ address + "<br/>"+ "Email: " +email+ "<br/>"+
+                "Phone: "+ phone];
+            }
+
+        }
+    </script>
+    
+</body>
+</html>
