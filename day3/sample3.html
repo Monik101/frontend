@@ -1,0 +1,150 @@
+<html>
+
+<head>
+<title>Sample3</title>
+<link rel="stylesheet" type="text/css" href="/Users/monikmalik/Desktop/Day3/sample3.css">
+</head>
+
+<body>
+
+  <div class="container">
+        <form action="/contact" method="post" id="registeration-form">
+            <h1>Registeration Form</h1>
+
+            <div class="form-group">
+                <label for="name"><h3>Name</h3></label>
+                <input type="text" name="name" id="name" class="form-control" value="Monik" required>
+            </div>
+
+            <div class="form-group1">
+                <div>
+                    <label for="age"><h3>Age</h3></label>
+                    <input type="number" name="age" id="age" value="21" size="50" class="form-control" style="margin-right: 10px;" required>
+                </div>
+
+                <div>
+                    <label for="email"><h3>Email</h3></label>
+                    <input type="emial" name="email" id="email" size="50" class="form-control"  value="temp@gmail.com" required>
+                </div>
+            </div>
+
+            <div class="form-group2">
+                <div>
+                    <label for="gender"><h3>Gender</h3></label>
+                    <div class="radio-container">
+                        <input type="radio" name="gender" value="Male" class="form-control-radio" required>Male
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio" name="gender" value="Female" class="form-control-radio" required>Female
+                    </div>
+                </div>
+
+                <div>
+                    <label for="country"><h3>County:</h3></label>
+                    <select id="country">
+                        <option class="form-control">India</option>
+                        <option class="form-control">Iran</option>
+                        <option class="form-control">Japan</option>
+                    </select>
+                </div>
+                
+            </div>
+
+            <div class="form-group">
+                <label for="phone"><h3>Phone Number</h3></label>
+                <input type="tel" name="phone" id="phone" class="form-control" value="98285910" required>
+            </div>
+
+            <div class="form-group">
+                <label class="technology"><h3>Technological stack:</h3></label>
+
+                <div class="tech-box">
+
+                    <div class="intech-box">
+                        <label>JavaScript</label>
+                        <input name="tech" type="checkbox" value="JavaScript">
+                    </div>
+
+                    <div class="intech-box">
+                        <label>HTML</label>
+                        <input name="tech" type="checkbox" value="HTML">
+                    </div>
+
+                    <div class="intech-box">
+                        <label>CSS</label>
+                        <input name="tech" type="checkbox" value="CSS">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="address"><h3>Address</h3></label>
+                <textarea id="address" required>Temp Address</textarea>
+            </div>
+
+
+            <div class="buttonss">
+
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+
+            </div>
+
+
+        </form>
+
+        <div class="results-area">
+            <p id="results"></p>
+        </div>
+    </div>
+
+
+    <script>
+        const form = document.getElementById("registeration-form");
+        form.addEventListener('submit', submitted );
+
+        function submitted(event){
+            event.preventDefault();
+    
+            let name = document.getElementById("name").value;
+
+            let age = document.getElementById("age").value;
+
+            let email = document.getElementById("email").value;
+
+            let gender_temp = document.getElementsByName("gender");
+            let gender 
+            for(let i =0; i<gender_temp.length;i++){
+                if (gender_temp[i].checked){
+                    gender = gender_temp[i].value;
+                }
+            }
+
+            let e = document.getElementById("country");
+            country = e.options[e.selectedIndex].text;
+
+            let stack_temp = document.getElementsByName("tech");
+            const tech =[]
+            for(let i = 0; i< stack_temp.length;i++){
+                if(stack_temp[i].checked){
+                    tech.push(stack_temp[i].value)
+                }
+            }
+            if (tech.length == 0){
+                tech.push("None");
+            }
+
+            let address = document.getElementById("address").value;
+            let phone = document.getElementById("phone").value;
+
+            document.getElementById("results").innerHTML = ["Name: " + name + "<br/>" + " age: " + age+ "<br/>"+" gender: " + gender+ "<br/>"
+                + "Country: " +country + "<br/>"+ "Technology stack: "+ tech+ "<br/>"+ "Address: "+ address + "<br/>"+ "Email: " +email+ "<br/>"+
+                "Phone: "+ phone];
+
+
+        }
+    </script>
+</body>
+
+</html>
