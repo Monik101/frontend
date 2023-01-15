@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <form class="registeration-form">
+            <h1>Registeration Form</h1>
+
+            <div class="name-div">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="Monik" style="width: 100%; " required>
+            </div>
+
+            
+
+            <div class="age-email-div">
+                <div>
+                    <label for="age">Age</label>
+                    <input type="number" name="age" id="age" value="21" size="50" style="width: 100%;" required>
+                </div>
+
+                <div>
+                    <label for="email">Email</label>
+                    <input type="emial" name="email" id="email" size="50"  value="temp@gmail.com" style="width: 100%;"required>
+                </div>
+            </div>
+
+
+
+            <div class="gender-country-div">
+                <div class="gender-div">
+                    <label for="gender">Gender</label>
+
+                    <div>
+                        <input type="radio" name="gender" value="Male" style="text-align: left;" required>Male
+                    </div>
+                    <div>
+                        <input type="radio" name="gender" value="Female" style="text-align: left;" required>Female
+                    </div>
+                </div>
+
+                <div class="country-div">
+                    <label for="country">Country</label>
+                    <select id="country">
+                        <option >India</option>
+                        <option >Iran</option>
+                        <option >Japan</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="phone-div">
+                <label for="phone">Phone Number</label>
+                <input type="tel" name="phone" id="phone" value="9828591000" required>
+            </div>
+
+
+            <div class="tech-div">
+                <label for="tech">Technological stack:</label>
+                <div>
+
+                    <div class="tech-labels">
+                        <label>JavaScript</label>
+                        <input name="tech" type="checkbox" value="JavaScript">
+                    </div>
+
+                    <div class="tech-labels">
+                        <label>HTML</label>
+                        <input name="tech" type="checkbox" value="HTML">
+                    </div>
+
+                    <div class="tech-labels">
+                        <label>CSS</label>
+                        <input name="tech" type="checkbox" value="CSS">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="add-div">
+                <label for="address">Address</label>
+                <textarea id="address" required>Temp Address</textarea>
+            </div>
+
+
+            <div class="button-div">
+
+                <input type="submit" value="Submit" onclick="submitAct()">
+                <input type="reset" value="Reset" onclick="resetfunc()">
+
+            </div>
+
+
+        </form>
+    </div>
+
+    <div id="results-areaa"  style="display: none;"> 
+        <p id="results"></p>
+    </div>
+
+
+    <script>
+        function submitAct(){
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+
+            let age = document.getElementById("age").value;
+
+            let email = document.getElementById("email").value;
+
+            let gender_temp = document.getElementsByName("gender");
+            let gender
+            for (let i = 0; i < gender_temp.length; i++) {
+                if (gender_temp[i].checked) {
+                    gender = gender_temp[i].value;
+                }
+            }
+
+            let e = document.getElementById("country");
+            country = e.options[e.selectedIndex].text;
+
+            let stack_temp = document.getElementsByName("tech");
+            const tech = []
+            for (let i = 0; i < stack_temp.length; i++) {
+                if (stack_temp[i].checked) {
+                    tech.push(stack_temp[i].value)
+                }
+            }
+            if (tech.length == 0) {
+                tech.push("None");
+            }
+
+            let address = document.getElementById("address").value;
+            let phone = document.getElementById("phone").value;
+            
+
+            document.getElementById("results").innerHTML = ["Name: " + name + "<br/>" + " age: " + age + "<br/>" + " gender: " + gender + "<br/>"
+                + "Country: " + country + "<br/>" + "Technology stack: " + tech + "<br/>" + "Address: " + address + "<br/>" + "Email: " + email + "<br/>" +
+                "Phone: " + phone];
+
+
+
+            document.getElementById("results-areaa").style.display = "block";
+            }
+
+        function resetfunc(){
+            document.getElementById("results-areaa").style.display = "none";
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
