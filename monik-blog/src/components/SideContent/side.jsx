@@ -16,7 +16,7 @@ function Sidelist(props) {
     return (
         <a href="gibris" className='menu-feed'>
             <div className='menu-feed-icon'>{props.icon} </div>
-            <div><b>{props.name} </b></div>
+            <div>{props.name} </div>
         </a>
     );
 }
@@ -32,17 +32,32 @@ function Trending(props) {
 }
 
 
+const SIDE_LIST = [{
+    name: 'My Feed',
+    icon: <FeedOutlinedIcon />
+}, {
+    name: "Explore",
+    icon: <ExploreOutlinedIcon />
+}, {
+    name: "Drafts",
+    icon: <SaveAsOutlinedIcon />
+}, {
+    name: "Bookmarks",
+    icon: <BookmarksOutlinedIcon />
+}, {
+    name: "Hackahons",
+    icon: <SettingsEthernetOutlinedIcon />
+}, {
+    name: "More",
+    icon: <KeyboardDoubleArrowRightOutlinedIcon />
+}]
+
+
 function Side() {
     return (
         <div className='side-feed'>
             <div className='side-list-1'>
-                <Sidelist name="My Feed" icon=<FeedOutlinedIcon /> />
-                <Sidelist name="Explore" icon=<ExploreOutlinedIcon /> />
-                <Sidelist name="Drafts" icon=<SaveAsOutlinedIcon /> />
-                <Sidelist name="Bookmarks" icon=<BookmarksOutlinedIcon /> />
-                <Sidelist name="Hackahons" icon=<SettingsEthernetOutlinedIcon /> />
-                <Sidelist name="More" icon=<KeyboardDoubleArrowRightOutlinedIcon /> />
-
+                {SIDE_LIST.map(listItem => <Sidelist name={listItem.name} icon={listItem.icon} />)}
             </div>
             <hr />
             <div className='side-list-2'>

@@ -1,6 +1,6 @@
-import Chatbox from "./chatbox";
+import Chatbox from "../Chatbox/chatbox";
 import ContentRight from "./content-right";
-import Side from "./side";
+import Side from "../SideContent/side";
 
 
 
