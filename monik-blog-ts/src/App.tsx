@@ -5,29 +5,21 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  Link,
   Outlet,
   RouterProvider,
-  Routes
 } from 'react-router-dom';
 import Profile from './routes/Profile';
-import ContentRight from './routes/MainContent/content-right';
-import Chatbox from './components/Chatbox/chatbox';
 import Side from './components/SideContent/side';
 import Blog from './components/Blog';
+import SearchSec from './routes/searchSection';
 
 const AppLayout = () => (
   <>
     <Navbar />
     <div className="content-area">
-      <div className="content-area-inner">
-        <Side />
-        <div className="outlet">
-          <Outlet />
-        </div>
-      </div>
-      <div>
-        <Chatbox />
+      <Side />
+      <div className="outlet">
+        <Outlet />
       </div>
     </div>
   </>
@@ -38,12 +30,11 @@ const router = createBrowserRouter(
     <>
       <Route path="/" element={<AppLayout />}>
         <Route index path="/content" element={<Content />} />
-        {/* <Route path="/content/intro" element={<ContentRight />} />
-        <Route path="/content/1" element={<Des />} /> */}
         <Route path="/blog/:blogid" element={<Blog />} />
+        <Route path="/search/:searchid" element={ <SearchSec/> } >
+        </Route>
       </Route>
-      {/* <Route element={<Outlet />}>  */}
-      <Route path="profile" element={<Profile />} />
+      <Route path="/profile" element={<Profile />} />
 
       {/* </Route> */}
     </>
